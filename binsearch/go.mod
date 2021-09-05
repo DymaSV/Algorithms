@@ -1,3 +1,3 @@
-module github.com/algorithms/binsearch
+module github.com/DymaSV/Algorithms/binsearch
 
 go 1.16
