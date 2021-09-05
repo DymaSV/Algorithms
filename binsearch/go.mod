@@ -1,3 +1,3 @@
-module github.com/checkalgorithms/binsearch
+module github.com/algorithms/binsearch
 
 go 1.16
