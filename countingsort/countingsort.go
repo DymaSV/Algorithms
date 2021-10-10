@@ -3,7 +3,7 @@ package countingsort
 import "math"
 
 func CountingSort(arr []int) []int {
-	return getSortedArray(prefixSum(getMap(arr)), arr)
+	return recreateArray(prefixSum(getMap(arr)), arr)
 }
 
 func getMap(arr []int) (map[int]int, int, int) {
@@ -31,8 +31,10 @@ func prefixSum(m map[int]int, max int, min int) map[int]int {
 			arrCount[i] = m[i]
 		}
 	}
+	return rightShift(max, min, arrCount)
+}
 
-	// Shift to the right
+func rightShift(max int, min int, arrCount map[int]int) map[int]int {
 	for i := max; i >= min; i-- {
 		arrCount[i] = arrCount[i-1]
 	}
@@ -40,7 +42,7 @@ func prefixSum(m map[int]int, max int, min int) map[int]int {
 	return arrCount
 }
 
-func getSortedArray(m map[int]int, arr []int) []int {
+func recreateArray(m map[int]int, arr []int) []int {
 	var result = make([]int, len(arr))
 	for _, v := range arr {
 		result[m[v]] = v
